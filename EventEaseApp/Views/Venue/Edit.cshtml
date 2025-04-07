@@ -1,0 +1,40 @@
+﻿@model EventEaseApp.Models.Venue
+
+<h2>Edit Venue</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="VenueId" />
+
+    <div class="form-group">
+        <label asp-for="VenueName"></label>
+        <input asp-for="VenueName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Locations"></label>
+        <input asp-for="Locations" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Capacity"></label>
+        <input asp-for="Capacity" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageUrl"></label>
+        <input asp-for="ImageUrl" class="form-control" />
+    </div>
+    <div class="form-group form-check">
+        <!-- Always post 0 if unchecked -->
+        <input type="hidden" name="IsAvailable" value="0" />
+
+        <!-- Post 1 if checked -->
+        <input type="checkbox" name="IsAvailable" value="1" class="form-check-input"
+        @(Model.IsAvailable == 1 ? "checked" : "") />
+        <label class="form-check-label" for="IsAvailable">Is Available</label>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save Changes" class="btn btn-primary" />
+    </div>
+</form>
